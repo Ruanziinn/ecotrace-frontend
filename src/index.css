@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    /* EcoTrace dark green theme */
+    --background: 222 47% 7%;          /* #0f172a */
+    --foreground: 210 40% 98%;
+
+    --card: 217 33% 14%;               /* #1e293b */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 217 33% 14%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 160 84% 39%;            /* #10b981 */
+    --primary-foreground: 222 47% 7%;
+    --primary-hover: 160 84% 32%;      /* #059669 */
+    --primary-glow: 160 84% 50%;
+
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 160 84% 39%;
+    --accent-foreground: 222 47% 7%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 160 84% 39%;
+    --success-foreground: 222 47% 7%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 7%;
+
+    --info: 217 91% 60%;
+    --info-foreground: 222 47% 7%;
+
+    --border: 217 33% 22%;
+    --input: 217 33% 18%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.75rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(160 84% 39%), hsl(160 84% 50%));
+    --gradient-card: linear-gradient(135deg, hsl(217 33% 14%), hsl(217 33% 12%));
+    --gradient-glow: radial-gradient(circle at top, hsl(160 84% 39% / 0.15), transparent 60%);
+
+    --shadow-card: 0 4px 24px -8px hsl(222 47% 4% / 0.6);
+    --shadow-glow: 0 0 32px hsl(160 84% 39% / 0.25);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html, body, #root {
+    @apply h-full;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    background-image: var(--gradient-glow);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .eco-card {
+    @apply rounded-xl border border-border bg-card p-5;
+    box-shadow: var(--shadow-card);
+  }
+  .eco-input {
+    @apply w-full rounded-lg border border-border bg-input px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition;
+  }
+  .eco-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-all disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .eco-btn-primary {
+    @apply eco-btn bg-primary text-primary-foreground hover:bg-[hsl(var(--primary-hover))] active:scale-[0.98];
+    box-shadow: var(--shadow-glow);
+  }
+  .eco-btn-outline {
+    @apply eco-btn border border-border bg-transparent text-foreground hover:bg-secondary;
+  }
+  .eco-btn-danger {
+    @apply eco-btn bg-destructive text-destructive-foreground hover:opacity-90;
+  }
+}
+
+@layer utilities {
+  .gradient-primary { background: var(--gradient-primary); }
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
